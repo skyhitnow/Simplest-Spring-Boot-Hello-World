@@ -25,7 +25,8 @@ pipeline{
             stages{
                 stage("creating the vm"){
                     steps{
-                        echo "creating the vm"
+                        sh 'vmip=`az vm show -d -g testrg -n testvm --query publicIps -o tsv`'
+                        echo "${vmip}"
                     }
                 }
 
