@@ -25,12 +25,13 @@ pipeline{
             steps{
                 withCredentials([azureServicePrincipal('azure-sp')]) {
                 sh 'az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET -t $AZURE_TENANT_ID'
+                script{
                 ARM_CLIENT_ID=$AZURE_CLIENT_ID
                 ARM_CLIENT_SECRET=$AZURE_CLIENT_SECRET
                 ARM_TENANT_ID=$AZURE_TENANT_ID
                 ARM_SUBSCRIPTION_ID=$AZURE_SUBSCRIPTION_ID
 
-
+                }
 
                 }
             }
