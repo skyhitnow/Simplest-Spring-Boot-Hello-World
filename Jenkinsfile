@@ -28,8 +28,8 @@ pipeline{
                                     clientSecretVariable: 'ARM_CLIENT_SECRET',
                                     tenantIdVariable: 'ARM_TENANT_ID')]){
                                         echo "test"
-                //sh 'terraform init'
-                //sh 'terraform apply  --auto-approve'
+                sh 'terraform init'
+                sh 'terraform apply  --auto-approve'
                 }
             }
         }
@@ -51,6 +51,9 @@ pipeline{
         stage("deploying the app"){
                     steps{
                         echo "deploying the app"
+                        sh 'az vm upload --resource-group testrg --name testvm \
+                         --from  target/example.smallest-0.0.1-SNAPSHOT.war \
+                         --to /opt/tomcat8/webapps/'
                     }
 
                 }
