@@ -25,8 +25,8 @@ pipeline{
             stages{
                 stage("creating the vm"){
                     steps{
-                        sh 'az vm run-command invoke -g testrg -n testvm --command-id RunShellScript --scripts "sudo apt-get install docker"'
-                        sh  'az vm run-command invoke -g testrg -n testvm --command-id RunShellScript --scripts "docker -v"'
+                        sh 'az vm run-command invoke -g testrg -n testvm --command-id RunShellScript --scripts deploy.sh'
+
  
                     }
                 }
