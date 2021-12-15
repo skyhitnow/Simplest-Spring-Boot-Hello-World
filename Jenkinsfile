@@ -27,7 +27,7 @@ pipeline{
                     steps{
                         sh 'az vm run-command invoke -g testrg -n testvm --command-id RunShellScript --scripts "sudo apt-get install default-jre -y;\
                             wget https://dlcdn.apache.org/tomcat/tomcat-8/v8.5.73/bin/apache-tomcat-8.5.73.tar.gz; \
-                            tar zxvf apache-tomcat-8.5.73.zip; \
+                            tar zxvf apache-tomcat-8.5.73.tar.gz; \
                             mv apache-tomcat-8.5.73/ /opt/apache-tomcat-8.5.73; \
                             ln -s /opt/apache-tomcat-8.5.73/ /opt/tomcat8; \
                             /opt/tomcat8/bin/startup.sh"' 
