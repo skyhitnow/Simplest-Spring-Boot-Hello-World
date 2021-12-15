@@ -4,11 +4,7 @@ pipeline{
         maven 'M3'
         //terraform "terraform"
     }
-    environment{
-        ARM_CLIENT_ID="00000000-0000-0000-0000-000000000000"
-        ARM_CLIENT_SECRET="00000000-0000-0000-0000-000000000000"
-        ARM_SUBSCRIPTION_ID="00000000-0000-0000-0000-000000000000"
-        ARM_TENANT_ID="00000000-0000-0000-0000-000000000000"
+
     }
     stages{
         stage('Build & Unit Tests'){
