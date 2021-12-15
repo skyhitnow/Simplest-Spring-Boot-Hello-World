@@ -3,7 +3,7 @@ pipeline{
     tools{
         maven 'M3'
     }
-    stages{
+    
         stage('Build & Unit Tests'){
             steps{
                 sh 'mvn clean verify -DskipITs=true'
@@ -12,8 +12,9 @@ pipeline{
 
             }
         }
-         withCredentials([azureServicePrincipal('azure-sp')]){
-        stage("Deployment"){    
+         
+        stage("Deployment"){  
+            withCredentials([azureServicePrincipal('azure-sp')]){  
             stages{
                 stage("creating the vm"){
                     steps{
@@ -38,5 +39,5 @@ pipeline{
             }
         }
             
-}
+
 }
