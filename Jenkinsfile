@@ -3,7 +3,7 @@ pipeline{
     tools{
         maven 'M3'
     }
-    
+    stages{
         stage('Build & Unit Tests'){
             steps{
                 sh 'mvn clean verify -DskipITs=true'
@@ -39,5 +39,5 @@ pipeline{
             }
         }
             
-
+    }
 }
