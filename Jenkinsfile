@@ -25,8 +25,9 @@ pipeline{
             stages{
                 stage("creating the vm"){
                     steps{
-                        sh 'vmip=`az vm show -d -g testrg -n testvm --query publicIps -o tsv`'
-                        sh 'echo ${vmip}'
+                        az vm run-command invoke -g testrg -n testvm --command-id RunShellScript --scripts "sudo apt-get install docker"
+                        az vm run-command invoke -g testrg -n testvm --command-id RunShellScript --scripts "docker -v"
+ 
                     }
                 }
 
