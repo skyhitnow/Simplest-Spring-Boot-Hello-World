@@ -24,13 +24,6 @@ pipeline{
         stage("azure login"){
             steps{
                 withCredentials([azureServicePrincipal('azure-sp')]) {
-                sh 'echo "provider "azurerm" { >provider.tf'
-                sh 'echo subscription_id = "$AZURE_SUBSCRIPTION_ID">>provider.tf'
-                sh 'echo client_id = "$AZURE_CLIENT_ID">>provider.tf'
-                sh 'echo client_secret = "$AZURE_CLIENT_SECRET">>provider.tf'
-                sh 'echo tenant_id = "$AZURE_TENANT_ID">>provider.tf'
-                sh 'echo features{}>>provider.tf'
-                sh 'echo }>>provider.tf'
                 sh 'az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET -t $AZURE_TENANT_ID'
 
 
@@ -41,8 +34,8 @@ pipeline{
         
         stage("create the infra"){
             steps{
-                sh 'terraform init'
-                sh 'terraform apply  --auto-approve'
+                //sh 'terraform init'
+                //sh 'terraform apply  --auto-approve'
             }
         }
         
