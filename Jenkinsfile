@@ -12,7 +12,7 @@ pipeline{
 
             }
         }
-
+         withCredentials([azureServicePrincipal('azure-sp')]){
         stage("Deployment"){    
             stages{
                 stage("creating the vm"){
@@ -34,7 +34,7 @@ pipeline{
 
                 }
                     
-
+            }
             }
         }
             
