@@ -43,10 +43,10 @@ resource "azurerm_public_ip" "pip" {
 }
 
 resource "azurerm_storage_account" "storage" {
-  name                     = "cs110032001b66260ab"
+  name                     = "ded23a7fe01e004b"
   location                 = "Japan East"
   resource_group_name      = azurerm_resource_group.rg.name
-  account_tier             = "Standard/Hot"
+  account_tier             = "Standard"
   account_replication_type = "LRS"
 }
 
@@ -73,7 +73,7 @@ resource "azurerm_virtual_machine" "vm" {
 
   os_profile {
     computer_name  = "VMtest"
-    admin_username = "admin"
+    admin_username = "blake"
     admin_password = "test123*"
   }
 
