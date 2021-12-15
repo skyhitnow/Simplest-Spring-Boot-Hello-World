@@ -2,7 +2,7 @@ pipeline{
     agent any
     tools{
         maven 'M3'
-        terraform "terraform"
+        //terraform "terraform"
     }
     stages{
         stage('Build & Unit Tests'){
