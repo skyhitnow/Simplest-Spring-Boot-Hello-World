@@ -25,7 +25,7 @@ pipeline{
         stage("create the infra"){
             steps{
                 sh "terraform init"
-                sh "terrform apply"
+                sh "terraform apply"
             }
         }
         
