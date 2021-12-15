@@ -5,7 +5,7 @@ pipeline{
         //terraform "terraform"
     }
 
-    }
+    
     stages{
         stage('Build & Unit Tests'){
             steps{
