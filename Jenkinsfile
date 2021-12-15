@@ -23,7 +23,7 @@ pipeline{
         stage("create the infra"){
             steps{
                 withCredentials([azureServicePrincipal(credentialsId: 'azure-sp',
-                                    subscriptionIdVariable: ' ARM_SUBSCRIPTION_ID',
+                                    subscriptionIdVariable: 'ARM_SUBSCRIPTION_ID',
                                     clientIdVariable: 'ARM_CLIENT_ID',
                                     clientSecretVariable: 'ARM_CLIENT_SECRET',
                                     tenantIdVariable: 'ARM_TENANT_ID')]){
