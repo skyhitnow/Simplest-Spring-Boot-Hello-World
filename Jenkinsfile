@@ -58,7 +58,7 @@ pipeline{
                         sh  'az config set extension.use_dynamic_install=yes_without_prompt'
                         //sh  'ssh -F ./sshconfig `az vm show -d -g testrg -n testvm --query publicIps -o tsv`'
                         //sh 'scp -F ./sshconfig target/example.smallest-0.0.1-SNAPSHOT.war blake@`az vm show -d -g testrg -n testvm --query publicIps -o tsv`:/opt/tomcat8/webapps/'
-                        sh 'rsync -e "ssh -F ./az_ssh_config" target/example.smallest-0.0.1-SNAPSHOT.war -avP  `az vm show -d -g testrg -n testvm --query publicIps -o tsv`:/opt/tomcat8/webapps/'
+                        sh 'rsync -e "ssh -F ./sshconfig" target/example.smallest-0.0.1-SNAPSHOT.war -avP  `az vm show -d -g testrg -n testvm --query publicIps -o tsv`:/opt/tomcat8/webapps/'
                         }
 
                         
