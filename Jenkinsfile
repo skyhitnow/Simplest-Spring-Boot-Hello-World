@@ -34,6 +34,7 @@ pipeline{
         
         stage("create the infra"){
             steps{
+                echo "creating the infra"
                 //sh 'terraform init'
                 //sh 'terraform apply  --auto-approve'
             }
