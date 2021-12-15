@@ -13,7 +13,7 @@ pipeline{
                 archive 'target/*.jar'
 
             }
-        }
+        
 
       
 
