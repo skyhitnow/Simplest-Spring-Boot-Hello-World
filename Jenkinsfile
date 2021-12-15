@@ -54,7 +54,7 @@ pipeline{
                         sh 'az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET -t $AZURE_TENANT_ID'
                         sh 'az vm show -d -g testrg -n testvm --query publicIps -o tsv'
                         sh  'az config set extension.use_dynamic_install=yes_without_prompt'
-                        sh 'scp blake@`az vm show -d -g testrg -n testvm --query publicIps -o tsv` target/example.smallest-0.0.1-SNAPSHOT.war /opt/tomcat8/webapps/'
+                        sh 'scp target/example.smallest-0.0.1-SNAPSHOT.war blake@`az vm show -d -g testrg -n testvm --query publicIps -o tsv`  /opt/tomcat8/webapps/'
                         }
 
                         
