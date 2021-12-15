@@ -27,8 +27,9 @@ pipeline{
                                     clientIdVariable: 'ARM_CLIENT_ID',
                                     clientSecretVariable: 'ARM_CLIENT_SECRET',
                                     tenantIdVariable: 'ARM_TENANT_ID')]){
-                sh 'terraform init'
-                sh 'terraform apply  --auto-approve'
+                                        echo "test"
+                //sh 'terraform init'
+                //sh 'terraform apply  --auto-approve'
                 }
             }
         }
@@ -38,8 +39,8 @@ pipeline{
                         withCredentials([azureServicePrincipal('azure-sp')]){
                         sh 'az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET -t $AZURE_TENANT_ID'
                         sh 'az vm run-command invoke -g testrg -n testvm --command-id RunShellScript --scripts "sudo apt-get install git -y"' 
-                        sh 'az vm run-command invoke -g testrg -n testvm --command-id RunShellScript --scripts "git clone https://github.com/skyhitnow/Simplest-Spring-Boot-Hello-World /opt" ' 
-                        sh 'az vm run-command invoke -g testrg -n testvm --command-id RunShellScript --scripts "@/tmp/Simplest-Spring-Boot-Hello-World/deploy.sh"' 
+                        sh 'az vm run-command invoke -g testrg -n testvm --command-id RunShellScript --scripts "git clone https://github.com/skyhitnow/Simplest-Spring-Boot-Hello-World /opt/hello" ' 
+                        sh 'az vm run-command invoke -g testrg -n testvm --command-id RunShellScript --scripts "@/opt/hello/Simplest-Spring-Boot-Hello-World/deploy.sh"' 
                         }
  
                     }
