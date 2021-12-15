@@ -50,10 +50,14 @@ pipeline{
 
         stage("deploying the app"){
                     steps{
-                        echo "deploying the app"
-                        sh 'az vm upload --resource-group testrg --name testvm \
-                         --from  target/example.smallest-0.0.1-SNAPSHOT.war \
-                         --to /opt/tomcat8/webapps/'
+                         withCredentials([azureServicePrincipal('azure-sp')]){
+                        sh 'az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET -t $AZURE_TENANT_ID'
+                        sh 'az ssh cert --public-key-file ./id_rsa.pub --file ./id_rsa-aadcert.pub' 
+                        sh 'az ssh config --resource-group testrg --vm-name testvm --file ./sshconfig' 
+                        sh 'scp blake@`az vm show -d -g reousrceGroupName -n vmName --query publicIps -o tsv` target/example.smallest-0.0.1-SNAPSHOT.war /opt/tomcat8/webapps/'
+                        }
+
+                        
                     }
 
                 }
