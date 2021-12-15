@@ -29,8 +29,6 @@ pipeline{
                         sh 'az vm run-command invoke -g testrg -n testvm --command-id RunShellScript --scripts "git --version||sudo apt-get install git"'
 
                         sh 'az vm run-command invoke -g testrg -n testvm --command-id RunShellScript --scripts "sudo apt-get install default-jre && \
-
-
 wget https://dlcdn.apache.org/tomcat/tomcat-8/v8.5.73/bin/apache-tomcat-8.5.73.zip && \
 tar zxvf apache-tomcat-8.5.73.zip && \
 sudo mv apache-tomcat-8.5.73/ /opt/apache-tomcat-8.5.73 && \
