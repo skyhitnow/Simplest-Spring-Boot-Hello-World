@@ -6,13 +6,14 @@ pipeline{
     }
     
     stages{
-        stage('Build & Unit Tests'){}
+        stage('Build & Unit Tests'){
             steps{
                 sh 'mvn clean verify -DskipITs=true'
                 junit allowEmptyResults: true,testResults: '**/test-results/*.xml'
                 archive 'target/*.jar'
 
             }
+        }
         
 
       
