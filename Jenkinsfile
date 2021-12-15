@@ -12,6 +12,7 @@ pipeline{
 
             }
         }
+
          
         stage("azure login"){
             steps{
@@ -21,9 +22,14 @@ pipeline{
 }
             }
         
-        stage("Deployment"){ 
-            stages{
-                stage("creating the vm"){
+        stage("create the infra"){
+            steps{
+                sh "terraform init"
+                sh "terrform apply"
+            }
+        }
+        
+        stage("setup the app server"){
                     steps{
                         sh 'az vm run-command invoke -g testrg -n testvm --command-id RunShellScript --scripts "sudo apt-get install default-jre -y;\
                             wget https://dlcdn.apache.org/tomcat/tomcat-8/v8.5.73/bin/apache-tomcat-8.5.73.tar.gz; \
@@ -36,23 +42,23 @@ pipeline{
                     }
                 }
 
-                stage("setting up application server"){
-                    steps{
-                        echo "setting up app server "
-                    }
-                }
+                
 
-                stage("deploying the app"){
+        stage("deploying the app"){
                     steps{
                         echo "deploying the app"
                     }
 
                 }
                     
-            }
             
+        stage("destroy the infra"){
+            steps{
+                echo "destroying the azure vm"
+            }
+        }
         
-        } 
+        }
     
-}
+    }
 }
