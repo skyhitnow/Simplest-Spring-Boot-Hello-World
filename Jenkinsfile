@@ -2,6 +2,7 @@ pipeline{
     agent any
     tools{
         maven 'M3'
+        terraform "terraform"
     }
     stages{
         stage('Build & Unit Tests'){
@@ -25,7 +26,7 @@ pipeline{
         stage("create the infra"){
             steps{
                 sh 'terraform init'
-                sh 'terraform apply'
+                sh 'terraform apply  --auto-approve'
             }
         }
         
