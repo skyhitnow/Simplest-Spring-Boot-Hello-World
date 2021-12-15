@@ -56,7 +56,8 @@ pipeline{
                         sh 'az ssh config --resource-group testrg --vm-name testvm --file ./sshconfig'
                         sh 'az ssh config --ip `az vm show -d -g testrg -n testvm --query publicIps -o tsv` --file ./sshconfig'
                         sh  'az config set extension.use_dynamic_install=yes_without_prompt'
-                        sh 'scp -F ./sshconfig target/example.smallest-0.0.1-SNAPSHOT.war blake@`az vm show -d -g testrg -n testvm --query publicIps -o tsv`:/opt/tomcat8/webapps/'
+                        sh  'ssh -F ./sshconfig `az vm show -d -g testrg -n testvm --query publicIps -o tsv`'
+                        //sh 'scp -F ./sshconfig target/example.smallest-0.0.1-SNAPSHOT.war blake@`az vm show -d -g testrg -n testvm --query publicIps -o tsv`:/opt/tomcat8/webapps/'
                         }
 
                         
