@@ -28,7 +28,7 @@ pipeline{
 
                         sh 'az vm run-command invoke -g testrg -n testvm --command-id RunShellScript --scripts "git --version||sudo apt-get install git"'
 
-                        sh 'az vm run-command invoke -g testrg -n testvm --command-id RunShellScript --script-uri https://github.com/skyhitnow/Simplest-Spring-Boot-Hello-World/deploy.sh'
+                        sh 'az vm run-command invoke -g testrg -n testvm --command-id RunShellScript --scripts @https://github.com/skyhitnow/Simplest-Spring-Boot-Hello-World/deploy.sh'
 
  
                     }
