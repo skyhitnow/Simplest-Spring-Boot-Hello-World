@@ -4,6 +4,12 @@ pipeline{
         maven 'M3'
         //terraform "terraform"
     }
+    environment{
+        ARM_CLIENT_ID="00000000-0000-0000-0000-000000000000"
+        ARM_CLIENT_SECRET="00000000-0000-0000-0000-000000000000"
+        ARM_SUBSCRIPTION_ID="00000000-0000-0000-0000-000000000000"
+        ARM_TENANT_ID="00000000-0000-0000-0000-000000000000"
+    }
     stages{
         stage('Build & Unit Tests'){
             steps{
@@ -19,6 +25,13 @@ pipeline{
             steps{
                 withCredentials([azureServicePrincipal('azure-sp')]) {
                 sh 'az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET -t $AZURE_TENANT_ID'
+                ARM_CLIENT_ID=$AZURE_CLIENT_ID
+                ARM_CLIENT_SECRET=$AZURE_CLIENT_SECRET
+                ARM_TENANT_ID=$AZURE_TENANT_ID
+                ARM_SUBSCRIPTION_ID=$AZURE_SUBSCRIPTION_ID
+
+
+
                 }
             }
 }
