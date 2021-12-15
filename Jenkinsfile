@@ -18,10 +18,10 @@ pipeline{
         stage("azure login"){
             steps{
                 withCredentials([azureServicePrincipal('azure-sp')]) {
-                sh 'export subscription_id="$AZURE_SUBSCRIPTION_ID"'
-                sh 'export client_id="$AZURE_CLIENT_ID"'
-                sh 'export client_secret="$AZURE_CLIENT_SECRET"'
-                sh 'export tenant_id="$AZURE_TENANT_ID"'
+                sh 'export ARM_SUBSCRIPTION_ID="$AZURE_SUBSCRIPTION_ID"'
+                sh 'export ARM_CLIENT_ID="$AZURE_CLIENT_ID"'
+                sh 'export ARM_CLIENT_SECRET="$AZURE_CLIENT_SECRET"'
+                sh 'export ARM_TENANT_ID="$AZURE_TENANT_ID"'
                 }
 }
             }
