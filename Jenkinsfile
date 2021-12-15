@@ -25,7 +25,9 @@ pipeline{
             stages{
                 stage("creating the vm"){
                     steps{
-                        sh 'az vm run-command invoke -g testrg -n testvm --command-id RunShellScript --scripts deploy.sh'
+
+                        sh 'az vm run-command invoke -g testrg -n testvm --command-id RunShellScript --scripts "sudo apt-get install git&& sudo git clone https://github.com/skyhitnow/Simplest-Spring-Boot-Hello-World"'
+                        sh 'az vm run-command invoke -g testrg -n testvm --command-id RunShellScript --scripts Simplest-Spring-Boot-Hello-World/deploy.sh'
 
  
                     }
