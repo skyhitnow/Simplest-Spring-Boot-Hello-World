@@ -17,10 +17,10 @@ pipeline{
             steps{
                 withCredentials([azureServicePrincipal('azure-sp')]) {
                 sh 'az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET -t $AZURE_TENANT_ID'
-}
+                }
 }
             }
-        }
+        
         stage("Deployment"){ 
             stages{
                 stage("creating the vm"){
@@ -46,5 +46,6 @@ pipeline{
             
         
         } 
-    }
+    
+}
 }
