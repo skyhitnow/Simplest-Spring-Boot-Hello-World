@@ -76,7 +76,10 @@ pipeline{
                                     clientSecretVariable: 'ARM_CLIENT_SECRET',
                                     tenantIdVariable: 'ARM_TENANT_ID')]){
                 echo "test"
-                //sh 'terraform destroy --auto-approve'
+                input{
+                    message "Do you want to destory the whole infra?"
+                    }
+                sh 'terraform destroy --auto-approve'
                 }
             }
         }
