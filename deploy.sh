@@ -1,6 +1,7 @@
 #! /bin/bash
 
 #install jre
+java -version ||
 cd /home/blake &&
 sudo apt-get install default-jre &&
 
