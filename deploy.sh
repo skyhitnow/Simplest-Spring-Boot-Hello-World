@@ -1,8 +1,8 @@
 #! /bin/bash
 
 #install jre
-cd /home/blake &&
-sudo apt-get install default-jre &&
+cd ~&&
+sudo apt-get install default-jre -y &&
 
 #install tomcat
 wget https://dlcdn.apache.org/tomcat/tomcat-8/v8.5.73/bin/apache-tomcat-8.5.73.tar.gz &&
