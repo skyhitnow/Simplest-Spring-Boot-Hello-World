@@ -59,7 +59,7 @@ pipeline{
                         //sh  'ssh -F ./sshconfig `az vm show -d -g testrg -n testvm --query publicIps -o tsv`'
                         //sh 'scp -F ./sshconfig target/example.smallest-0.0.1-SNAPSHOT.war blake@`az vm show -d -g testrg -n testvm --query publicIps -o tsv`:/opt/tomcat8/webapps/'
                         //sh 'rsync -e "ssh -F ./sshconfig" target/example.smallest-0.0.1-SNAPSHOT.war -avP  `az vm show -d -g testrg -n testvm --query publicIps -o tsv`:/opt/tomcat8/webapps/'
-                        sh 'sudo sshpass -p test123* scp  -o StrictHostKeyChecking=no target/example.smallest-0.0.1-SNAPSHOT.war blake@`az vm show -d -g testrg -n testvm --query publicIps -o tsv`:/opt/tomcat8/webapps/'
+                        sh 'sshpass -p test123* sudo scp  -o StrictHostKeyChecking=no target/example.smallest-0.0.1-SNAPSHOT.war blake@`az vm show -d -g testrg -n testvm --query publicIps -o tsv`:/opt/tomcat8/webapps/'
                         }
 
                         
