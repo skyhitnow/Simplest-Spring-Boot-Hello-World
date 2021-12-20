@@ -39,7 +39,7 @@ pipeline{
                         withCredentials([azureServicePrincipal('azure-sp')]){
                         sh 'az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET -t $AZURE_TENANT_ID'
                         sh 'az vm run-command invoke -g testrg -n testvm --command-id RunShellScript --scripts "sudo apt-get install git -y"' 
-                        sh 'az vm run-command invoke -g testrg -n testvm --command-id RunShellScript --scripts "sudo rm -rf /opt/hello && git clone https://github.com/skyhitnow/Simplest-Spring-Boot-Hello-World /opt/" ' 
+                        sh 'az vm run-command invoke -g testrg -n testvm --command-id RunShellScript --scripts "sudo rm -rf /opt/Simplest-Spring-Boot-Hello-World && git clone https://github.com/skyhitnow/Simplest-Spring-Boot-Hello-World /opt/" ' 
                         sh 'az vm run-command invoke -g testrg -n testvm --command-id RunShellScript --scripts "sudo chmod +x /opt/Simplest-Spring-Boot-Hello-World/deploy.sh && /opt/Simplest-Spring-Boot-Hello-World/deploy.sh"'
                         }
  
